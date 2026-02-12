@@ -3,16 +3,30 @@ import ReactDOM from 'react-dom/client'
 
 //Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap"
+import "bootstrap";
 
 // index.css'
 import '../styles/index.css'
 
 // components
-import Home from './components/Home';
+import Numero from './components/number'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+
+let counter = 0;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+setInterval(() => {
+  const digitos = counter.toString().padStart(4, '0').split("");
+
+  root.render(
+    <React.StrictMode>
+      <div className='contenedorPrincipal'>
+        <Numero Numeros={digitos} />
+      </div>
+    </React.StrictMode>
+  );
+
+  counter++;
+}, 1000);
+
+
